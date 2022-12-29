@@ -15,3 +15,18 @@ exports.createProduct = async(req, res) => {
         })
     }
 }
+
+exports.getAllProducts = async(req, res) => {
+    try {
+        const products = await Product.find()
+        res.status(200).render('index.ejs', {
+            products,
+        })
+        
+    } catch (error) {
+        res.status(400).json({
+            status: 'Fail',
+            error
+        })
+    }
+}

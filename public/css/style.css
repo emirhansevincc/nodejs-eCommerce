@@ -1,4 +1,4 @@
---------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+/* --------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
 
 @import url(animate.min.css);
@@ -952,6 +952,36 @@ input.mail_bt::placeholder {
 .margin_top90 {
     margin-top: 90px;
 }
-
-
-/* copyright section end */
+.fashion_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1800px;
+}
+.i-products{
+    width: 400px;
+    height: 630px;
+    margin: 30px;
+    border: 3px solid rgb(226, 225, 225);
+    border-radius: 15px;
+    padding: 15px;
+}
+@media (min-width: 1860px) {.index-p-container{margin: 0 90px 0 90px;}}
+@media (min-width: 1976px) {.fashion_section{max-width: 3000px;}}
+.btn_main{
+    text-align: center;
+    padding: 10px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.btn-see{
+    border: 2px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+@media (min-width: 1193px) {
+    .btn-see{
+        margin-bottom: 80px;
+    }
+}
