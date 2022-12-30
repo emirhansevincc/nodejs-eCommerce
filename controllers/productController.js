@@ -30,3 +30,18 @@ exports.getAllProducts = async(req, res) => {
         })
     }
 }
+
+exports.getProductSingle = async(req, res) => {
+    try {
+        const product = await Product.findOne({slug: req.params.slug})
+        res.status(200).render('single.ejs', {
+            product,
+        })
+        
+    } catch (error) {
+        res.status(400).json({
+            status: 'Fail',
+            error
+        })
+    }
+}
