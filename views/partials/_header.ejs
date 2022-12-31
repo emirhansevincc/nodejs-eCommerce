@@ -101,10 +101,17 @@
                <div class="header_box">
                   <div class="login_menu">
                      <ul>
-                        <li><a href="#">
+                        <% if(ifUserIn) {%> 
+                           <li><a href="#">
+                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                 <span class="padding_10">Cart</span></a>
+                           </li>
+                           <li><a href="#">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
+                              <span class="padding_10">Logout</span></a>
                         </li>
+                        <% } %> 
+                        <% if(!ifUserIn) {%> 
                         <li><a href="/login">
                               <i class="fa fa-user" aria-hidden="true"></i>
                               <span class="padding_10">Login</span></a>
@@ -113,6 +120,7 @@
                            <i class="fa fa-user" aria-hidden="true"></i>
                            <span class="padding_10">Register</span></a>
                         </li>
+                        <% } %> 
                      </ul>
                   </div>
                </div>

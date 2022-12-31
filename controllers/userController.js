@@ -19,7 +19,7 @@ exports.createUser = async(req, res) => {
 
 exports.login = async(req, res) => {
     try {
-
+ 
         // const {email, password} = req.body
         const email = req.body.email
         const password = req.body.password
@@ -28,7 +28,8 @@ exports.login = async(req, res) => {
             if(exist){
                 bcrypt.compare(password, exist.password, (err, ifSame) => {
                     if(ifSame){
-                        res.status(200).send('Login part is working!')
+                        req.session.userID = exist._id
+                        res.status(200).redirect('/')
                     }
                 })
             }else{
