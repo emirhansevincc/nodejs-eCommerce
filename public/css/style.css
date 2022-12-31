@@ -1022,3 +1022,8 @@ input.mail_bt::placeholder {
     margin-top: 20px;
 }
 @media (max-width: 650px) {.card{width: 400px;}}
+@media (min-width: 1191px) {
+    .i-products{
+        height: 650px;
+    }
+}

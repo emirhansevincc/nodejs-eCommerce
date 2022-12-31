@@ -1,4 +1,5 @@
 const Product = require('../models/Product')
+const Category = require('../models/Category')
 
 exports.createProduct = async(req, res) => {
     try {
@@ -18,7 +19,18 @@ exports.createProduct = async(req, res) => {
 
 exports.getAllProducts = async(req, res) => {
     try {
-        const products = await Product.find()
+        const categoryQuery = req.query.categories
+        const category = await Category.findOne({slug: categoryQuery})
+
+        let filter = {}
+        if(categoryQuery){
+            filter = {category: category._id}
+        }
+
+
+        const products = await Product.find(filter)
+
+
         res.status(200).render('index.ejs', {
             products,
         })
