@@ -10,3 +10,7 @@ exports.getFashionPage = (req, res) => {
 exports.getRegisterPage = (req, res) => {
     res.status(200).render('register.ejs')
 }
+
+exports.getLoginPage = (req, res) => {
+    res.status(200).render('login.ejs')
+}
