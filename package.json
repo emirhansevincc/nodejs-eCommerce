@@ -12,6 +12,7 @@
   "author": "Emirhan Sevinç",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mongoose": "^6.8.2",

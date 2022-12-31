@@ -1027,3 +1027,33 @@ input.mail_bt::placeholder {
         height: 650px;
     }
 }
+.form-container{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.form-container input{
+    padding: 6px;
+    width: 250px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+}
+.form-container button{
+    width: 250px;
+    background-color: transparent;
+    border: 3px solid gray;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 3px 0;
+    transition: .5s;
+}
+.form-container button:hover{
+    border: 3px solid rgb(240, 171, 42);
+    
+}
+.register{border: none;border-radius: 20px;}

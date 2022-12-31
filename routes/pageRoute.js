@@ -7,6 +7,6 @@ const router = express.Router()
 
 router.route('/').get(productController.getAllProducts)
 router.route('/fashion').get(pageController.getFashionPage)
-
+router.route('/register').get(pageController.getRegisterPage)
 
 module.exports = router

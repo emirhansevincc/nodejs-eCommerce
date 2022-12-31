@@ -6,3 +6,7 @@ exports.getIndexPage = async(req, res) => {
 exports.getFashionPage = (req, res) => {
     res.status(200).render('fashion')
 }
+
+exports.getRegisterPage = (req, res) => {
+    res.status(200).render('register.ejs')
+}
