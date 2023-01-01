@@ -68,7 +68,7 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <div class="logo"><a href="index.html"><img src="images/logo.png"></a></div>
+                  <div class="logo"><a href="index.html"><img src="/images/logo.png"></a></div>
                </div>
             </div>
          </div>
@@ -85,42 +85,20 @@
                   <a href="/products?categories=electronic">Electronic</a>
                   <a href="/products?categories=jewellery">Jewellery</a>
                </div>
-               <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+               <span class="toggle_icon" onclick="openNav()"><img src="/images/toggle-icon.png"></span>
                <div class="main">
-                  <!-- Another variation with a button -->
-                  <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search this blog">
-                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button"
-                           style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
-                        </button>
-                     </div>
-                  </div>
                </div>
                <div class="header_box">
                   <div class="login_menu">
                      <ul>
-                        <% if(ifUserIn) {%> 
-                           <li><a href="/users/cart">
-                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                 <span class="padding_10">Cart</span></a>
-                           </li>
-                           <li><a href="users/logout">
-                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Logout</span></a>
-                        </li>
-                        <% } %> 
-                        <% if(!ifUserIn) {%> 
-                        <li><a href="/login">
+                        <li><a href="/users/cart">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Login</span></a>
+                              <span class="padding_10">Cart</span></a>
                         </li>
-                        <li><a href="/register">
+                        <li><a href="/users/logout">
                            <i class="fa fa-user" aria-hidden="true"></i>
-                           <span class="padding_10">Register</span></a>
+                           <span class="padding_10">Logout</span></a>
                         </li>
-                        <% } %> 
                      </ul>
                   </div>
                </div>
@@ -128,3 +106,57 @@
          </div>
       </div>
       <!-- header section end -->
+
+    <div class="fashion_section try-container">
+        <div class="tester">
+            <h1 class="tester-text">Welcome : <%= user.name %>  </h1>
+        </div>
+        <div class="card register try">
+            <div class="product product-list">
+                <div class="name-price">
+                    <h2>Name</h2>
+                    <h2>PRICE</h2>
+                </div>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+            </div>
+        </div>
+        <div class="card register try">
+            <div class="product product-list">
+                <div class="name-price">
+                    <h2>Name</h2>
+                    <h2>PRICE</h2>
+                </div>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+            </div>
+        </div>
+        <div class="card register try">
+            <div class="product product-list">
+                <div class="name-price">
+                    <h2>Name</h2>
+                    <h2>PRICE</h2>
+                </div>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+            </div>
+        </div>
+        <div class="card register try">
+            <div class="product product-list">
+                <div class="name-price">
+                    <h2>Name</h2>
+                    <h2>PRICE</h2>
+                </div>
+                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+            </div>
+        </div>
+    </div>
+
+ <script>
+    function openNav() {
+       document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+       document.getElementById("mySidenav").style.width = "0";
+    }
+ </script>
+
+<%- include('partials/_footer.ejs') %>

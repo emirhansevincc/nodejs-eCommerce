@@ -29,7 +29,7 @@ exports.login = async(req, res) => {
                 bcrypt.compare(password, exist.password, (err, ifSame) => {
                     if(ifSame){
                         req.session.userID = exist._id
-                        res.status(200).redirect('/')
+                        res.status(200).redirect('/users/cart')
                     }
                 })
             }else{
@@ -48,5 +48,13 @@ exports.login = async(req, res) => {
 exports.logout = async(req, res) => {
     req.session.destroy(() => {
         res.redirect('/')
+    })
+}
+
+exports.getCartPage = async(req, res) => {
+    const user = await User.findOne({_id: req.session.userID})
+    console.log(user);
+    res.status(200).render('cart.ejs', {
+        user,
     })
 }

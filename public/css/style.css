@@ -1057,3 +1057,42 @@ input.mail_bt::placeholder {
     
 }
 .register{border: none;border-radius: 20px;}
+.product-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    flex-direction: column;
+    border: 3px solid rgb(188, 187, 187);
+    border-radius: 15px;
+}
+.name-price{
+    display: flex;
+    margin-right: auto;
+    padding-left: 20px;
+}
+.name-price h2{
+    margin-right: 15px;
+}
+.try{
+    margin-bottom: 10px;
+}
+.try-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tester{
+    background-color: rgb(226, 165, 51);
+    width: 450px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+.tester-text{
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: white;
+}
