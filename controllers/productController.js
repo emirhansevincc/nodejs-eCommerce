@@ -4,6 +4,7 @@ const Category = require('../models/Category')
 exports.createProduct = async(req, res) => {
     try {
         const product = await Product.create(req.body)
+        res.redirect('/')
         
     } catch (error) {
         res.status(400).json({
@@ -24,7 +25,7 @@ exports.getAllProducts = async(req, res) => {
         }
 
 
-        const products = await Product.find(filter)
+        const products = await Product.find(filter).sort('-createdDate')
 
 
         res.status(200).render('index.ejs', {

@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
+const Category = require('../models/Category')
 
 exports.createUser = async(req, res) => {
     try {
@@ -50,8 +51,11 @@ exports.logout = async(req, res) => {
 
 exports.getCartPage = async(req, res) => {
     const user = await User.findOne({_id: req.session.userID})
+    const categories = await Category.find()
+
     console.log(user);
     res.status(200).render('cart.ejs', {
         user,
+        categories
     })
 }

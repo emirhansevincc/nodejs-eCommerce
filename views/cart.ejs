@@ -39,6 +39,7 @@
    <link rel="stylesoeet" href="/css/owl.theme.default.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
       media="screen">
+   <script src="/public/Modal.js" defer></script>
 </head>
 
 <body>
@@ -114,51 +115,123 @@
          <div class="tester">
                <h1 class="tester-text">Welcome : <%= user.name %> / <%= user.role %></h1>
          </div>
+            <div class="card register try">
+               <div class="product product-list">
+                  <div class="name-price">
+                     <h2>Name</h2>
+                     <h2>PRICE</h2>
+                  </div>
+                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+               </div>
+               </div>
+               <div class="card register try">
+                     <div class="product product-list">
+                        <div class="name-price">
+                           <h2>Name</h2>
+                           <h2>PRICE</h2>
+                        </div>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                     </div>
+               </div>
+               <div class="card register try">
+                     <div class="product product-list">
+                        <div class="name-price">
+                           <h2>Name</h2>
+                           <h2>PRICE</h2>
+                        </div>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                     </div>
+               </div>
+               <div class="card register try">
+                     <div class="product product-list">
+                        <div class="name-price">
+                           <h2>Name</h2>
+                           <h2>PRICE</h2>
+                        </div>
+                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                     </div>
+               </div>
+            </div>
+         </div>
       <% } %>
       <% if(user.role === 'admin'){ %> 
          <div class="tester">
                <h1 class="tester-text">Welcome : <%= user.name %> / <%= user.role %></h1>
          </div>
+         <div class="modal-container" id="modal-container">
+            <form action="/products" method="POST">
+               <div class="modal">
+                  <div class="inputs">
+                     <input type="text" required name="name" placeholder="Product Name">
+                     <input type="text" required name="description" placeholder="Product Description">
+                     <input type="number" required name="price" placeholder="Product Price">
+                     <input type="hidden" name="role" value="<%= user.role %>">
+                     <select name="category" required class="category-class">
+                        <% for(let i =0; i<categories.length; i++){ %> 
+                           <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
+                        <% } %> 
+                     </select>
+                     <button class="modal-edit">Submit</button>
+                  </div>
+                  <button class="modal-close" id="modal-close">X</button>
+               </div>
+            </form>
+        </div> 
+        <button class="modal-button">CLICK ME</button>
+        <script>
+            const modalButton = document.querySelector('.modal-button')
+            const modal = document.getElementById('modal-container')
+            const modalCloseButton = document.querySelector('.modal-close')
+   
+            modalButton.addEventListener('click', () => {
+               modal.classList.add('show')
+            })
+   
+            modalCloseButton.addEventListener('click', () => {
+               modal.classList.remove('show')
+            })
+         </script>
+         <div class="card register try">
+            <div class="product product-list">
+                  <div class="name-price">
+                     <h2>Name</h2>
+                     <h2>PRICE</h2>
+                  </div>
+                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+               </div>
+            </div>
+            <div class="card register try">
+                  <div class="product product-list">
+                     <div class="name-price">
+                        <h2>Name</h2>
+                        <h2>PRICE</h2>
+                     </div>
+                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                  </div>
+            </div>
+            <div class="card register try">
+                  <div class="product product-list">
+                     <div class="name-price">
+                        <h2>Name</h2>
+                        <h2>PRICE</h2>
+                     </div>
+                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                  </div>
+            </div>
+            <div class="card register try">
+                  <div class="product product-list">
+                     <div class="name-price">
+                        <h2>Name</h2>
+                        <h2>PRICE</h2>
+                     </div>
+                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                  </div>
+            </div>
+         </div>
+         </div>
       <% } %> 
    
-         <div class="card register try">
-               <div class="product product-list">
-                  <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
-                  </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-         </div>
-         <div class="card register try">
-               <div class="product product-list">
-                  <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
-                  </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-         </div>
-         <div class="card register try">
-               <div class="product product-list">
-                  <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
-                  </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-         </div>
-         <div class="card register try">
-               <div class="product product-list">
-                  <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
-                  </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-         </div>
-      </div>
-   </div>
+         
 
    <% } %> 
 
