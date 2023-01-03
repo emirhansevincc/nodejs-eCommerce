@@ -91,10 +91,6 @@
                <div class="header_box">
                   <div class="login_menu">
                      <ul>
-                        <!-- <li><a href="#">
-                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
-                        </li> -->
                         <li><a href="/login">
                               <i class="fa fa-user" aria-hidden="true"></i>
                               <span class="padding_10">Login</span></a>
@@ -110,7 +106,6 @@
          </div>
       </div>
       <!-- header section end -->
-
     <div class="fashion_section">
         <div class="card register">
                 <form action="/users/signup" method="POST">
@@ -120,6 +115,7 @@
                             <input type="text" name="name" placeholder="Enter Your Fullname">
                             <input type="email" name="email" placeholder="Enter Your Email">
                             <input type="password" name="password" placeholder="Enter Your Password">
+                            <input type="hidden" name="role" value="customer">
                             <button type="submit">Register</button>
                         </div>
                     </div>
