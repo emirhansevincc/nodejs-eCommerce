@@ -41,7 +41,6 @@ app.use('/products', productRoute)
 app.use('/category', categoryRoute)
 app.use('/users', userRoute)
 
-
 const port = 3000
 app.listen(port, () => {
     console.log(`Server started on port ${port}.`);    

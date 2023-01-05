@@ -113,45 +113,22 @@
       <div class="fashion_section try-container">
       <% if(user.role === 'customer'){ %> 
          <div class="tester">
-               <h1 class="tester-text">Welcome : <%= user.name %> / <%= user.role %></h1>
+               <h1 class="tester-text">Welcome : <%= user.name %></h1>
+               <h1 class="tester-text">Role : <%= user.role %></h1>
+               <h1 class="tester-text">Basket Total : $<%= total %></h1>
          </div>
+         <% for(let i =0; i<user.products.length; i++){ %> 
             <div class="card register try">
                <div class="product product-list">
                   <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
+                     <h2><%= user.products[i].name %></h2>
+                     <h2><%= user.products[i].price %></h2>
                   </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-               </div>
-               <div class="card register try">
-                     <div class="product product-list">
-                        <div class="name-price">
-                           <h2>Name</h2>
-                           <h2>PRICE</h2>
-                        </div>
-                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                     </div>
-               </div>
-               <div class="card register try">
-                     <div class="product product-list">
-                        <div class="name-price">
-                           <h2>Name</h2>
-                           <h2>PRICE</h2>
-                        </div>
-                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                     </div>
-               </div>
-               <div class="card register try">
-                     <div class="product product-list">
-                        <div class="name-price">
-                           <h2>Name</h2>
-                           <h2>PRICE</h2>
-                        </div>
-                        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                     </div>
+                  <h3><%= user.products[i].description %></h3>
                </div>
             </div>
+            <% } %> 
+
          </div>
       <% } %>
       <% if(user.role === 'admin'){ %> 
@@ -230,7 +207,61 @@
          </div>
          </div>
       <% } %> 
+      <% if(user.role === 'seller'){ %> 
+         <div class="tester">
+            <h1 class="tester-text">Products from : <%= user.name %></h1>
+            <h1 class="tester-text">Role : <%= user.role.toUpperCase() %></h1>
+         </div>
+         <div class="modal-container" id="modal-container">
+            <form action="/products" method="POST">
+               <div class="modal">
+                  <div class="inputs">
+                     <input type="text" required name="name" placeholder="Product Name">
+                     <input type="text" required name="description" placeholder="Product Description">
+                     <input type="number" required name="price" placeholder="Product Price">
+                     <input type="hidden" name="role" value="<%= user.role %>">
+                     <select name="category" required class="category-class">
+                        <% for(let i =0; i<categories.length; i++){ %> 
+                           <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
+                        <% } %> 
+                     </select>
+                     <button class="modal-edit">Submit</button>
+                  </div>
+                  <button class="modal-close" id="modal-close">X</button>
+               </div>
+            </form>
+        </div> 
+        <button class="modal-button">Create New Product</button>
+        <script>
+            const modalBtn = document.querySelector('.modal-button')
+            const getModel = document.getElementById('modal-container')
+            const modalCloseBtn = document.querySelector('.modal-close')
    
+            modalBtn.addEventListener('click', () => {
+               getModel.classList.add('show')
+            })
+   
+            modalCloseBtn.addEventListener('click', () => {
+               getModel.classList.remove('show')
+            })
+         </script>
+         <div style="align-items: center;display: flex;justify-content: center;">
+         <% for(let i = 0; i<products.length; i++){ %> 
+         <div class="card register try">
+            <div class="product product-list">
+                  <div class="name-price">
+                     <h2><a href="/products/<%= products[i].slug %>"><%= products[i].name %></a></h2>
+                     <h2>$<%= products[i].price %></h2>
+                  </div>
+                  <h3><%= products[i].description %></h3>
+               </div>
+            </div>
+         </div>
+         <% } %> 
+         </div>
+
+         </div>
+      <% } %>
          
 
    <% } %> 

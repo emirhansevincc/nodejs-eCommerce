@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
-const Category = require('../models/Category')
+const Category = require('../models/Category');
+const Product = require('../models/Product');
 
 exports.createUser = async(req, res) => {
     try {
@@ -50,12 +51,23 @@ exports.logout = async(req, res) => {
 }
 
 exports.getCartPage = async(req, res) => {
-    const user = await User.findOne({_id: req.session.userID})
+
+    const user = await User.findOne({_id: req.session.userID}).populate('products')
     const categories = await Category.find()
+    const products = await Product.find({user: req.session.userID})
+
+    let total = 0
+    for (let index = 0; index < user.products.length; index++) {
+        total += user.products[index].price
+        
+    }
+
 
     console.log(user);
     res.status(200).render('cart.ejs', {
         user,
-        categories
+        categories,
+        products,
+        total
     })
 }

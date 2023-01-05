@@ -1,3 +1,5 @@
+const Product = require('../models/Product')
+
 exports.getIndexPage = (req, res) => {
     res.status(200).render('index.ejs', {
     })

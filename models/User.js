@@ -20,10 +20,16 @@ const UserSchema = new Schema({
         type: String,
     },
     role: {
-        enum: ['customer', 'admin'],
+        enum: ['customer', 'admin', 'seller'],
         type: String,
         default: 'customer'
-    }
+    },
+    products: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Product'
+        }
+    ]
 })
 
 UserSchema.pre('save', function(next){

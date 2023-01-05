@@ -50,7 +50,8 @@
             <div class="">
                <h4 class="shirt_text"><%= products[i].name %></h4>
                <p class="price_text">Price <span style="color: #262626;">$ <%= products[i].price %></span></p>
-               <h4 class="shirt_text"><%= products[i].category %></h4>
+               <h4 class="shirt_text"><%= products[i].category.name %></h4>
+               <h4 class="shirt_text">Seller : <%= products[i].user %></h4>
                <div class="tshirt_img"><img src="images/tshirt-img.png"></div>
                <div class="btn-see">
                   <div><a href="products/<%= products[i].slug %>">See More</a></div>
