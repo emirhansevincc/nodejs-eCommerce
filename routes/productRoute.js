@@ -9,6 +9,7 @@ router.route('/').post(roleMiddleware(['admin', 'seller']),productController.cre
 router.route('/:slug').get(productController.getProductSingle)
 router.route('/').get(productController.getAllProducts)
 router.route('/addCart').post(productController.addToCart)
+router.route('/delete').post(productController.deleteProduct)
 
 
 module.exports = router

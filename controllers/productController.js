@@ -48,9 +48,11 @@ exports.getAllProducts = async(req, res) => {
 
 exports.getProductSingle = async(req, res) => {
     try {
+        const user = await User.findById(req.session.userID)
         const product = await Product.findOne({slug: req.params.slug})
         res.status(200).render('single.ejs', {
             product,
+            user
         })
         
     } catch (error) {
@@ -65,6 +67,22 @@ exports.addToCart = async(req, res) => {
     try {
         const user = await User.findById(req.session.userID)
         await user.products.push({_id: req.body.product_single_id})
+        await user.save()
+
+        res.status(200).redirect('/users/cart')
+        
+    } catch (error) {
+        res.status(400).json({
+            status: 'Fail',
+            error
+        })
+    }
+}
+
+exports.deleteProduct = async(req, res) => {
+    try {
+        const user = await User.findById(req.session.userID)
+        await user.products.pull({_id: req.body.course_id})
         await user.save()
 
         res.status(200).redirect('/users/cart')

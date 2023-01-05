@@ -120,9 +120,15 @@
          <% for(let i =0; i<user.products.length; i++){ %> 
             <div class="card register try">
                <div class="product product-list">
-                  <div class="name-price">
-                     <h2><%= user.products[i].name %></h2>
-                     <h2><%= user.products[i].price %></h2>
+                  <div class="name-price" style="position: relative;width: 100%;">
+                        <h2><%= user.products[i].name %></h2>
+                        <h2>$<%= user.products[i].price %></h2>
+                        <div style="position: absolute;right: 5px;top: 0px;">
+                           <form action="/products/delete" method="post">
+                              <input type="hidden" name="course_id" value="<%= user.products[i]._id %>">
+                              <button class="release" type="submit">Delete</button>
+                           </form>
+                        </div>
                   </div>
                   <h3><%= user.products[i].description %></h3>
                </div>
@@ -211,6 +217,7 @@
          <div class="tester">
             <h1 class="tester-text">Products from : <%= user.name %></h1>
             <h1 class="tester-text">Role : <%= user.role.toUpperCase() %></h1>
+            <h1 class="tester-text red">The products below were created by you</h1>
          </div>
          <div class="modal-container" id="modal-container">
             <form action="/products" method="POST">

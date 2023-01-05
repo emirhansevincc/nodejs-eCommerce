@@ -55,10 +55,12 @@
                     <div class="product-description common"><%= product.description %></div>
                 </div>
                 <div>
+                  <% if(user && !(user.products.includes(product._id))){ %> 
                   <form action="/products/addCart" method="post">
                      <input type="hidden" name="product_single_id" value="<%= product._id %>">
                      <button type="submit" class="product-basket-button common"><span href="#">Add Basket</span></button>
                   </form>
+                  <% } %> 
                   </div>
             </div>
       </div>

@@ -969,6 +969,7 @@ input.mail_bt::placeholder {
 }
 @media (min-width: 1860px) {.index-p-container{margin: 0 90px 0 90px;}}
 @media (min-width: 1976px) {.fashion_section{max-width: 3000px;}}
+
 .btn_main{
     text-align: center;
     padding: 10px;
@@ -1163,6 +1164,13 @@ input.mail_bt::placeholder {
     cursor: pointer;
     color: whitesmoke;
     font-size: 25px;
+}
+.red{color: red;}
+.release{
+    background-color: orange;
+    padding: 1px 6px;
+    border-radius: 10px;
+    color: white;
 }
 .modal-button{
     margin-top: 20px;
