@@ -11,13 +11,13 @@ exports.createProduct = async(req, res) => {
             user: req.session.userID,
             category: req.body.category,
         })
+        req.flash("success", `${product.name} created successfully`);
         res.redirect('/')
         
     } catch (error) {
-        res.status(400).json({
-            status: 'Fail',
-            error
-        })
+        req.flash("error", `${product.name} is not created successfully !`);
+        res.redirect('/')
+
     }
 }
 

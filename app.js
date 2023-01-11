@@ -7,6 +7,7 @@ const userRoute = require('./routes/userRoute')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 
 const app = express()
 
@@ -29,6 +30,11 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(flash());
+app.use((req, res, next)=> {
+  res.locals.flashMessages = req.flash();
+  next();
+})
 
 
 global.ifUserIn = null
