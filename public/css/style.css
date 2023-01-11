@@ -1177,3 +1177,25 @@ input.mail_bt::placeholder {
     border: none;
     border-radius: 10px;
 }
+.message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+.mail_bt{
+    border-left: 3px solid white;
+    border-radius: 15px;
+    padding: 5px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.send-message{
+    width: 200px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 3px solid whitesmoke;
+    color: white;
+}

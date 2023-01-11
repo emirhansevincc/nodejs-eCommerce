@@ -11,5 +11,6 @@ router.route('/').get(productController.getAllProducts)
 router.route('/fashion').get(pageController.getFashionPage)
 router.route('/register').get(userMiddleware, pageController.getRegisterPage)
 router.route('/login').get(userMiddleware, pageController.getLoginPage)
+router.route('/').post(pageController.sendEmail)
 
 module.exports = router
