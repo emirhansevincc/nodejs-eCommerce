@@ -25,14 +25,25 @@ exports.getAllProducts = async(req, res) => {
     try {
         const categoryQuery = req.query.categories
         const category = await Category.findOne({slug: categoryQuery})
+        const searchQuery = req.query.search
 
         let filter = {}
         if(categoryQuery){
             filter = {category: category._id}
         }
 
+        if(searchQuery){
+            filter = { name: searchQuery }
+        } else if(!searchQuery && !categoryQuery){
+            filter = { name: '', category: null }
+        }
 
-        const products = await Product.find(filter).sort('-createdDate').populate({path: 'category'})
+        const products = await Product.find({
+            $or: [
+                {name: {$regex: '.*' + filter.name + '.*', $options: 'i'}},
+                {category: filter.category},
+            ]
+        }).sort('-createdDate').populate(['category', 'user'])
 
         res.status(200).render('index.ejs', {
             products,

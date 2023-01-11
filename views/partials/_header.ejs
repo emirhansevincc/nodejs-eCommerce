@@ -88,15 +88,17 @@
                <span class="toggle_icon" onclick="openNav()"><img src="/images/toggle-icon.png"></span>
                <div class="main">
                   <!-- Another variation with a button -->
+                  <form action="/">
                   <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search this blog">
-                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button"
-                           style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
-                        </button>
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <div class="input-group-append">
+                           <button class="btn btn-secondary" type="submit"
+                              style="background-color: #f26522; border-color:#f26522 ">
+                              <i class="fa fa-search"></i>
+                           </button>
                      </div>
                   </div>
+                  </form>
                </div>
                <div class="header_box">
                   <div class="login_menu">

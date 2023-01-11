@@ -801,26 +801,12 @@ a:hover {
         transform: rotate(360deg);
     }
 }
-
-
-/* loader bar css end */
-
-
-/* jewellery section end */
-
-
-/* footer section start */
-
-
-/* footer section start */
-
 .footer_section {
     width: 100%;
     float: left;
     background-color: #252525;
     height: auto;
 }
-
 .footer_logo {
     width: 100%;
     text-align: center;
@@ -1025,7 +1011,7 @@ input.mail_bt::placeholder {
 @media (max-width: 650px) {.card{width: 400px;}}
 @media (min-width: 1191px) {
     .i-products{
-        height: 650px;
+        height: 700px;
     }
 }
 .form-container{
