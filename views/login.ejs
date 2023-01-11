@@ -113,6 +113,15 @@
                     <div class="inputs">
                         <div class="form-container">
                            <h1>LOGIN</h1>
+                           <% if (flashMessages) { %>
+                              <% if (flashMessages.error) { %>
+                                 <div style="background-color: red; width: 70%; margin: 20px auto;color: white; padding: 4px;text-align: center;border-radius: 15px;">
+                                    <div>
+                                       <p><%= flashMessages.error %></p>
+                                    </div>
+                                 </div>
+                              <% } %>
+                           <% } %>
                            <input type="email" name="email" placeholder="Enter Your Email">
                            <input type="password" name="password" placeholder="Enter Your Password">
                            <button type="submit">Login</button>
