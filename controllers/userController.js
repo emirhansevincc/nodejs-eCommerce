@@ -63,6 +63,7 @@ exports.getCartPage = async(req, res) => {
     const user = await User.findOne({_id: req.session.userID}).populate('products')
     const categories = await Category.find()
     const products = await Product.find({user: req.session.userID})
+    const users = await User.find()
 
     let total = 0
     for (let index = 0; index < user.products.length; index++) {
@@ -76,6 +77,23 @@ exports.getCartPage = async(req, res) => {
         user,
         categories,
         products,
-        total
+        total,
+        users
     })
+}
+
+exports.deleteUser = async(req, res) => {
+    try {
+        const user = await User.findById({_id: req.params.id})
+        await user.remove()
+        await Product.deleteMany({user: req.params.id})
+        req.flash("error", `${user.name} is deleted.`);
+        res.status(200).redirect('/users/cart')
+        
+    } catch (error) {
+        res.status(400).json({
+            status: 'Fail',
+            error
+        })
+    }
 }

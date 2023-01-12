@@ -111,6 +111,15 @@
          </div>
          <!-- header section end -->
       <div class="fashion_section try-container">
+         <% if (flashMessages) { %>
+            <% if (flashMessages.error) { %>
+               <div style="background-color: red; width: 70%; margin: 20px auto;color: white; padding: 4px;text-align: center;border-radius: 15px;">
+                  <div>
+                     <p><%= flashMessages.error %></p>
+                  </div>
+               </div>
+          <% } %>
+         <% } %>
       <% if(user.role === 'customer'){ %> 
          <div class="tester">
                <h1 class="tester-text">Welcome : <%= user.name %></h1>
@@ -174,6 +183,32 @@
                modal.classList.remove('show')
             })
          </script>
+
+
+
+         <table class="table" style="width: 90%;background-color: orange;max-width: 900px;margin-top: 30px;color: white;text-align: center;">
+            <thead>
+            <tr>
+               <th scope="col">Name</th>
+               <th scope="col">Email</th>
+               <th scope="col">Role</th>
+               <th scope="col">DELETE</th>
+            </tr>
+            </thead>
+            <tbody>
+               <% for(let i=0; i<users.length; i++){ %> 
+                  <tr>
+                     <th scope="row"><%= users[i].name %></th>
+                     <td><%= users[i].email %></td>
+                     <td><%= users[i].role %></td>
+                     <td><a href="/users/<%= users[i]._id %>?_method=DELETE" onclick="confirm('Are You Sure?')" style="color: white;background-color: red;padding: 5px;border-radius: 10px;margin-right: 5px;">Delete</a></td>
+                  </tr>
+               <% } %> 
+            </tbody>
+         </table>
+
+
+
          <div class="card register try">
             <div class="product product-list">
                   <div class="name-price">

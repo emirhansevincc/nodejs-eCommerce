@@ -26,5 +26,6 @@ router.route('/signup').post(
 router.route('/login').post(userController.login)
 router.route('/logout').get(userController.logout)
 router.route('/cart').get(redirectMiddleware, userController.getCartPage)
+router.route('/:id').delete(userController.deleteUser)
 
 module.exports = router
