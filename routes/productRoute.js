@@ -10,6 +10,7 @@ router.route('/:slug').get(productController.getProductSingle)
 router.route('/').get(productController.getAllProducts)
 router.route('/addCart').post(productController.addToCart)
 router.route('/delete').post(productController.deleteProduct)
+router.route('/:slug').delete(productController.adminAndSellerDelete)
 
 
 module.exports = router

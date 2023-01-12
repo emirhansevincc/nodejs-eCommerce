@@ -252,27 +252,38 @@
                getModel.classList.remove('show')
             })
          </script>
-         <div style="align-items: center;display: flex;justify-content: center;">
-         <% for(let i = 0; i<products.length; i++){ %> 
-         <div class="card register try">
-            <div class="product product-list">
-                  <div class="name-price">
-                     <h2><a href="/products/<%= products[i].slug %>"><%= products[i].name %></a></h2>
-                     <h2>$<%= products[i].price %></h2>
+
+         <% if (flashMessages) { %>
+            <% if (flashMessages.error) { %>
+               <div style="background-color: red; width: 70%; margin: 20px auto;color: white; padding: 4px;text-align: center;border-radius: 15px;">
+                  <div>
+                     <p><%= flashMessages.error %></p>
                   </div>
-                  <h3><%= products[i].description %></h3>
                </div>
-            </div>
-         </div>
-         <% } %> 
+            <% } %>
+         <% } %>
+
+         <div style="align-items: center;display: flex;justify-content: center;">
+            <% for(let i = 0; i<products.length; i++){ %> 
+               <div class="card register try" style="position: relative;">
+                  <div class="product product-list">
+                     <div class="name-price">
+                           <h2><a href="/products/<%= products[i].slug %>"><%= products[i].name %></a></h2>
+                           <h2>$<%= products[i].price %></h2>
+                           <div style="display: flex;position:absolute;align-items: center;justify-content: center;right: 14px;top: 14px;">
+                              <a href="/products/<%= products[i].slug %>?_method=DELETE" style="color: white;background-color: red;padding: 5px;border-radius: 10px;margin-right: 5px;">Delete</a>
+                           </div>
+                        </div>
+                        <h3><%= products[i].description %></h3>
+                     </div>
+                  </div>
+               </div>
+            <% } %> 
          </div>
 
          </div>
       <% } %>
-         
-
    <% } %> 
-
 
  <script>
     function openNav() {

@@ -105,3 +105,17 @@ exports.deleteProduct = async(req, res) => {
         })
     }
 }
+
+exports.adminAndSellerDelete = async(req, res) => {
+    try {
+        const product = await Product.findOneAndRemove({slug: req.params.slug})
+        req.flash("error", `${product.name} removed successfully`);
+        res.status(200).redirect('/users/cart')
+        
+    } catch (error) {
+        res.status(400).json({
+            status: 'Fail',
+            error
+        })
+    }
+}
