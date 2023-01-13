@@ -59,7 +59,7 @@
                            <li><a href="/products?categories=fashion">Fashion</a></li>
                            <li><a href="/products?categories=electronic">Electronic</a></li>
                            <li><a href="/products?categories=jewellery">Jewellery</a></li>
-                           <li><a href="#">Customer Service</a></li>
+                           <li><a href="*">Customer Service</a></li>
                         </ul>
                      </div>
                   </div>
@@ -95,10 +95,14 @@
                   <div class="header_box">
                      <div class="login_menu">
                         <ul>
-                           <li><a href="/users/cart">
-                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                 <span class="padding_10">Cart</span></a>
+                           <% if(user.role === 'admin' || user.role === 'seller'){ %> 
+                           <li><a href="/users/cart"><i class="fa fa-user" aria-hidden="true"></i><span class="padding_10">Dashboard</span></a>
                            </li>
+                           <% }else{ %> 
+                              <li><a href="/users/cart"><i class="fa fa-user" aria-hidden="true"></i><span class="padding_10">Cart</span></a>
+                              </li>
+                           <% } %> 
+
                            <li><a href="/users/logout">
                               <i class="fa fa-user" aria-hidden="true"></i>
                               <span class="padding_10">Logout</span></a>
@@ -111,15 +115,6 @@
          </div>
          <!-- header section end -->
       <div class="fashion_section try-container">
-         <% if (flashMessages) { %>
-            <% if (flashMessages.error) { %>
-               <div style="background-color: red; width: 70%; margin: 20px auto;color: white; padding: 4px;text-align: center;border-radius: 15px;">
-                  <div>
-                     <p><%= flashMessages.error %></p>
-                  </div>
-               </div>
-          <% } %>
-         <% } %>
       <% if(user.role === 'customer'){ %> 
          <div class="tester">
                <h1 class="tester-text">Welcome : <%= user.name %></h1>
@@ -169,7 +164,7 @@
                </div>
             </form>
         </div> 
-        <button class="modal-button">CLICK ME</button>
+        <button class="modal-button">Create Product</button>
         <script>
             const modalButton = document.querySelector('.modal-button')
             const modal = document.getElementById('modal-container')
@@ -183,9 +178,7 @@
                modal.classList.remove('show')
             })
          </script>
-
-
-
+         <h1 style="color: white;margin-top: 30px;background-color: orange;padding: 10px;border-radius: 10px;width: 300px;text-align: center;">USERS</h1>
          <table class="table" style="width: 90%;background-color: orange;max-width: 900px;margin-top: 30px;color: white;text-align: center;">
             <thead>
             <tr>
@@ -207,45 +200,55 @@
             </tbody>
          </table>
 
-
-
-         <div class="card register try">
-            <div class="product product-list">
-                  <div class="name-price">
-                     <h2>Name</h2>
-                     <h2>PRICE</h2>
-                  </div>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-               </div>
-            </div>
-            <div class="card register try">
-                  <div class="product product-list">
-                     <div class="name-price">
-                        <h2>Name</h2>
-                        <h2>PRICE</h2>
-                     </div>
-                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                  </div>
-            </div>
-            <div class="card register try">
-                  <div class="product product-list">
-                     <div class="name-price">
-                        <h2>Name</h2>
-                        <h2>PRICE</h2>
-                     </div>
-                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                  </div>
-            </div>
-            <div class="card register try">
-                  <div class="product product-list">
-                     <div class="name-price">
-                        <h2>Name</h2>
-                        <h2>PRICE</h2>
-                     </div>
-                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                  </div>
-            </div>
+         <div style="display:flex;margin-top: 30px;background-color: orange;padding: 10px;border-radius: 10px;width: 300px;text-align: center;align-items: center;justify-content: space-around;">
+            <h1 style="color: white;">CATEGORIES</h1>
+            <a class="add-category" style="border: 3px solid white; padding: 5px;border-radius: 15px;color: white;cursor: pointer;">Add Category</a>
          </div>
+         
+         <div class="modalContainer modal-container" id="modal-container">
+            <form action="/category" method="POST">
+               <div class="modal">
+                  <div class="inputs">
+                     <input type="text" required name="name" placeholder="Category Name">
+                     <button class="modal-edit">Submit</button>
+                  </div>
+                  <button class="modalClose modal-close" id="modal-close">X</button>
+               </div>
+            </form>
+        </div> 
+
+         <script>
+            const modalBTN = document.querySelector('.add-category')
+            const Modal = document.querySelector('.modalContainer')
+            const modalCloseBTN = document.querySelector('.modalClose')
+   
+            modalBTN.addEventListener('click', () => {
+               Modal.classList.add('show')
+            })
+   
+            modalCloseBTN.addEventListener('click', () => {
+               Modal.classList.remove('show')
+            })
+         </script>
+         
+         <table class="table" style="width: 90%;background-color: orange;max-width: 900px;margin-top: 30px;color: white;text-align: center;">
+            <thead>
+            <tr>
+               <th scope="col">ID</th>
+               <th scope="col">Name</th>
+               <th scope="col">Slug</th>
+            </tr>
+            </thead>
+            <tbody>
+               <% for(let i=0; i<categories.length; i++){ %> 
+                  <tr>
+                     <th scope="row"><%= categories[i]._id %></th>
+                     <td><%= categories[i].name %></td>
+                     <td><a href="/category/<%= categories[i]._id %>?_method=DELETE" onclick="confirm('Are You Sure?')" style="color: white;background-color: red;padding: 5px;border-radius: 10px;margin-right: 5px;">Delete</a></td>
+                  </tr>
+               <% } %> 
+            </tbody>
+         </table>
          </div>
       <% } %> 
       <% if(user.role === 'seller'){ %> 
@@ -272,7 +275,7 @@
                   <button class="modal-close" id="modal-close">X</button>
                </div>
             </form>
-        </div> 
+         </div> 
         <button class="modal-button">Create New Product</button>
         <script>
             const modalBtn = document.querySelector('.modal-button')
@@ -298,27 +301,24 @@
             <% } %>
          <% } %>
 
-         <div style="align-items: center;display: flex;justify-content: center;">
+         <div style="background-color: transparent;margin: 20px 0;">
             <% for(let i = 0; i<products.length; i++){ %> 
-               <div class="card register try" style="position: relative;">
-                  <div class="product product-list">
-                     <div class="name-price">
-                           <h2><a href="/products/<%= products[i].slug %>"><%= products[i].name %></a></h2>
-                           <h2>$<%= products[i].price %></h2>
-                           <div style="display: flex;position:absolute;align-items: center;justify-content: center;right: 14px;top: 14px;">
-                              <a href="/products/<%= products[i].slug %>?_method=DELETE" style="color: white;background-color: red;padding: 5px;border-radius: 10px;margin-right: 5px;">Delete</a>
-                           </div>
-                        </div>
-                        <h3><%= products[i].description %></h3>
-                     </div>
+            <div class="card" style="position: relative;">
+               <div class="info">
+                  <div class="name"><%= products[i].name %></div>
+                  <div class="price">$<%= products[i].price %></div>
+                  <div class="description"><%= products[i].description %></div>
+                  <div style="display: flex;position:absolute;align-items: center;justify-content: center;right: 14px;top: 14px;">
+                     <a href="/products/<%= products[i].slug %>?_method=DELETE" style="color: white;background-color: red;padding: 5px;border-radius: 10px;margin-right: 5px;">Delete</a>
                   </div>
                </div>
+            </div>
             <% } %> 
          </div>
-
-         </div>
       <% } %>
+
    <% } %> 
+
 
  <script>
     function openNav() {

@@ -11,11 +11,11 @@ exports.createProduct = async(req, res) => {
             user: req.session.userID,
             category: req.body.category,
         })
-        req.flash("success", `${product.name} created successfully`);
+        // await req.flash("success", `${product.name} created successfully`);
         res.redirect('/')
         
     } catch (error) {
-        req.flash("error", `${product.name} is not created successfully !`);
+        // await req.flash("error", `${product.name} is not created successfully !`);
         res.redirect('/')
 
     }
@@ -43,7 +43,7 @@ exports.getAllProducts = async(req, res) => {
                 {name: {$regex: '.*' + filter.name + '.*', $options: 'i'}},
                 {category: filter.category},
             ]
-        }).sort('-createdDate').populate(['category', 'user'])
+        }).sort('-createdDate').populate(['user', 'category'])
 
         res.status(200).render('index.ejs', {
             products,

@@ -27,24 +27,32 @@
                <div class="carousel-item active">
                   <div class="row">
                      <div class="col-sm-12">
-                        <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                        <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                        <h1 class="banner_taital">Get Start<br>Your Shoping</h1></h1>
+                        <div class="buynow_bt"><a href="/">GO Now</a></div>
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
                   <div class="row">
                      <div class="col-sm-12">
-                        <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                        <div class="buynow_bt"><a href="#">Buy Nowd</a></div>
+                        <h1 class="banner_taital">Get Start <br>Your Fashion Journey</h1>
+                        <div class="buynow_bt"><a href="/products?categories=fashion">GO NOW</a></div>
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
                   <div class="row">
                      <div class="col-sm-12">
-                        <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                        <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                        <h1 class="banner_taital">Get Start <br>Your Electronic Journey</h1>
+                        <div class="buynow_bt"><a href="/products?categories=electronic">GO NOW</a></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="row">
+                     <div class="col-sm-12">
+                        <h1 class="banner_taital">Get Start <br>Your Jewellery Journey</h1>
+                        <div class="buynow_bt"><a href="/products?categories=jewellery">GO NOW</a></div>
                      </div>
                   </div>
                </div>
@@ -68,11 +76,11 @@
             <div class="">
                <h4 class="shirt_text"><%= products[i].name %></h4>
                <p class="price_text">Price <span style="color: #262626;">$ <%= products[i].price %></span></p>
-               <h4 class="shirt_text"><%= products[i].category.name %></h4>
                <h4 class="shirt_text">Seller : <%= products[i].user.name %></h4>
-               <div class="tshirt_img"><img src="images/tshirt-img.png"></div>
-               <div class="btn-see">
-                  <div><a href="products/<%= products[i].slug %>">See More</a></div>
+               <h4 class="shirt_text">Category : There is a mistake here</h4>
+               <div class="tshirt_img"><img src="/images/tshirt-img.png"></div>
+               <div class="btn-see see-btn">
+                  <div class=""><a href="products/<%= products[i].slug %>">See More</a></div>
                </div>
             </div>
          </div>  

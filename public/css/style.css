@@ -943,7 +943,7 @@ input.mail_bt::placeholder {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 1800px;
+    max-width: 1400px;
 }
 .i-products{
     width: 400px;
@@ -966,10 +966,17 @@ input.mail_bt::placeholder {
     border: 2px solid gray;
     padding: 10px;
     text-align: center;
+    margin-bottom: 20px;
 }
 @media (min-width: 1193px) {
-    .btn-see{
-        margin-bottom: 80px;
+    .see-btn{
+        margin-bottom: 180px;
+    }
+
+}
+@media (min-width: 762px) {
+    .i-products{
+        height: 680px;
     }
 }
 .product-image{

@@ -49,6 +49,10 @@ app.use('/', pageRoute)
 app.use('/products', productRoute)
 app.use('/category', categoryRoute)
 app.use('/users', userRoute)
+app.use('*', (req, res) => {
+    res.render('404.ejs')
+})
+
 
 const port = 3000
 app.listen(port, () => {
